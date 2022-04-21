@@ -190,13 +190,6 @@ for frameNum = 1:(floor(ApproxNum2Frames/2)-1)
     % OFDM demodulate signal 
     rxgrid = lteOFDMDemodulate(enb, downsampled);    
     
-%     enbcp = enb;
-%     enbcp.CellRefP = 1;
-%     enbcp.NDLRB = 6;
-%     meas1 = hRSMeasurements(enb, rxgrid(:,1:L,:));
-%     RSRQdB(end+1) = meas1.RSRQdB;
-%     RSRPdBm(end+1) = meas1.RSRPdBm;
-%     RSSIdBm(end+1) = meas1.RSSIdBm;
     if (isempty(rxgrid))
         fprintf('After timing synchronization, signal is shorter than one subframe so no further demodulation will be performed.\n');
         return;
@@ -300,6 +293,3 @@ if MIBFLAG > 0
     end
     fprintf('   MIB was decoded %d time(s).\n', MIBFLAG);
 end
-
-
-
