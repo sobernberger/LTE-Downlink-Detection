@@ -303,7 +303,7 @@ for m = 1:length(bands)
                     enb.NCellID = enb.NCellID(1);
                     offset = offset(1);
                     peak = peak(1);
-                    % if peak is larger than previous peak, the found parameters are saved
+                    % if peak is larger than previous peaks, the found parameters are saved
                     if (peak>peakMax)
                         enbMax = enb;
                         offsetMax = offset;
@@ -350,7 +350,7 @@ for m = 1:length(bands)
                 continue
             end
 
-            % Delete all samples before beginning of new frame
+            % Delete all samples before beginning of new frame for time sync
             downsampled = downsampled(1+offset:end,:); 
             enb.NSubframe = 0;
             % Set TDD configurations, if detected duplex type is TDD
@@ -418,13 +418,9 @@ for m = 1:length(bands)
         clear Result
         % Store Cell IDs, Correlation Peaks, number of occurences of the Cell IDs and frequency
         Correlations = CellIds(:, 2)./CellIds(:, 3);
-        
         Result(:, 1) = CellIds(:, 1);
-        
         Result(:, 2) = Correlations;
-        
         Result(:, 3) = CellIds(:, 3);
-
         Result(:, 4) = center_freq./1e6.*ones(size(Result, 1), 1);
         % Display Cell IDs which occured the most
         Result = sortrows(Result, 3, 'descend');
