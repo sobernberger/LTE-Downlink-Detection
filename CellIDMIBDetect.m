@@ -185,8 +185,8 @@ for frameNum = 1:(floor(ApproxNum2Frames/2)-1)
                         
     fprintf('Performing OFDM demodulation...\n\n');
     
-    griddims = lteResourceGridSize(enb); % Resource grid dimensions
-    L = griddims(2);                     % Number of OFDM symbols in a subframe 
+    griddims = lteResourceGridSize(enb); 
+    L = griddims(2);     
     % OFDM demodulate signal 
     rxgrid = lteOFDMDemodulate(enb, downsampled);    
     
@@ -229,7 +229,6 @@ for frameNum = 1:(floor(ApproxNum2Frames/2)-1)
 
     if CellIdOk && MIBok
         rxgridmib = lteOFDMDemodulate(enb, downsampled);
-        %meas3 = hRSMeasurements(enb, rxgridmib(:,1:L,:));
         fprintf('\n   CellID has been found, and MIB has been successfully decoded. \n')
         fprintf(strcat('\n', sep, '\n'))
         disp(enb)
