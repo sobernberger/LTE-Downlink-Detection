@@ -66,7 +66,7 @@ cec.TimeWindow = 9;
 cec.InterpType = 'cubic';          
 cec.InterpWindow = 'Centered';     
 cec.InterpWinSize = 1;   
-% Initialize structures to save successfully decoded MIB and found Cell IDs in    
+% Initialize structures to save successfuly decoded MIB and found Cell IDs in    
 MIBDecoded = {};
 CellIds = double.empty(0, 3);
 MIBFLAG = 0;
@@ -225,7 +225,7 @@ for frameNum = 1:(floor(ApproxNum2Frames/2)-1)
     % Display system settings after MIB decoding
     fprintf('Cell-wide settings after MIB decoding:\n');
     disp(enb);
-    % lteMIB returns either CellRefP = 0 or NDLRB = 0, if MIB decoding hasn't been successfull
+    % lteMIB returns either CellRefP = 0 or NDLRB = 0, if MIB decoding hasn't been successful
     if (enb.CellRefP==0)
         warning('MIB decoding failed (enb.CellRefP=0).\n\n');
         MIBok=0;
@@ -236,9 +236,9 @@ for frameNum = 1:(floor(ApproxNum2Frames/2)-1)
         
     end
     
-    % Display system settings again, if Cell Search and MIB decoding have been successfull
+    % Display system settings again, if Cell Search and MIB decoding have been successful
     if CellIdOk && MIBok
-        fprintf('\n   CellID has been found, and MIB has been successfully decoded. \n')
+        fprintf('\n   CellID has been found, and MIB has been successfuly decoded. \n')
         fprintf(strcat('\n', sep, '\n'))
         disp(enb)
         MIBFLAG = MIBFLAG + 1;

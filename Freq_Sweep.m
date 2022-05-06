@@ -55,7 +55,7 @@ B71p = [622:0.1:627]*1e6;
 
 one = 742.5e6;
 
-% Frequencies at which Cell Searches have been successfull
+% Frequencies at which Cell Searches have been successful
 best = [1960, 1982.5, 1980, 1947.5, 1967.5, 1950, 1942.5, 2135, 2120, ...
     2125, 2145, 2147.5, 885.1, 887.5, 763, 742.5, 751, 624.5]*1e6;
 
@@ -257,7 +257,7 @@ for m = 1:length(bands)
         cec.InterpWindow = 'Centered';     
         cec.InterpWinSize = 1;    
         
-        % Initialize structures to save successfully decoded MIB and found Cell IDs in
+        % Initialize structures to save successfuly decoded MIB and found Cell IDs in
         MIBDecoded = {};
         CellIds = double.empty(0, 3);
         MIBFLAG = 0;
@@ -392,7 +392,7 @@ for m = 1:length(bands)
             % System frame number (SFN) is stored as floor(SFN/4). Therefore this calculates the actual SFN
             enb.NFrame = enb.NFrame+nfmod4;
             
-            % lteMIB returns either CellRefP = 0 or NDLRB = 0, if MIB decoding hasn't been successfull
+            % lteMIB returns either CellRefP = 0 or NDLRB = 0, if MIB decoding hasn't been successful
             if (enb.CellRefP==0)
                 MIBok=0;
             end
@@ -403,7 +403,7 @@ for m = 1:length(bands)
             end
             % If Cell ID has been found, and MIB has been decoded, display system information in terminal
             if CellIdOk && MIBok
-                fprintf('\n   CellID has been found, and MIB has been successfully decoded. \n')
+                fprintf('\n   CellID has been found, and MIB has been successfuly decoded. \n')
                 fprintf(strcat('\n', sep, '\n'))
                 disp(enb)
                 MIBFLAG = MIBFLAG + 1;
